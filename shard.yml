@@ -9,6 +9,5 @@ crystal: ">= 1.12.2"
 license: MIT
 
 dependencies:
-  cossack:
-    github: crystal-community/cossack
-    version: ~> 0.1
+  crest:
+    github: mamantoha/crest
