@@ -1,5 +1,5 @@
 require "../core_api"
-require "../objects/user"
+require "../types/user"
 
 module Telegram
   module GetApis
