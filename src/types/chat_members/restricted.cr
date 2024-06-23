@@ -1,6 +1,6 @@
 # https://core.telegram.org/bots/api#chatmemberrestricted
 
-require "../../user"
+require "../user"
 
 class MemberRestricted
   JSON.mapping(

@@ -1,6 +1,6 @@
 # https://core.telegram.org/bots/api#chatmemberowner
 
-require "../../user"
+require "../user"
 
 class MemberAdmin
   JSON.mapping(

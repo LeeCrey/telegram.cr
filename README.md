@@ -108,9 +108,6 @@ end
 
 - [Solomon Boloshe](https://github.com/LeeCrey) - creator and maintainer
 
-```
-
 ## License
 
 The library is available as open source under the terms of the [GPLv3+](https://gnu.org/licenses/gpl.html).
-```
