@@ -1,6 +1,6 @@
 # https://core.telegram.org/bots/api#chatmemberbanned
 
-require "../../user"
+require "../user"
 
 class MemberBanned
   JSON.mapping(
