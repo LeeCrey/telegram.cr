@@ -22,48 +22,41 @@ require "telegram"
 token = "place-your-bot's-token-here"
 bot = Telegram::Client.new(token)
 
-me = bot.get_me
+me = bot.me
 
-puts "first name: #{me["first_name"]}"
-puts "user name: #{me["username"]}"
-puts "id: #{me["id"]}"
+puts "id: #{me.id}, username: #{me.username}"
 ```
+
+In the above case `bot.me` returns [User](./src/types/user.cr) object. For more please read Telegram bot api.
+
+## Getting Updates
 
 There are two ways to get update from Telegram Server.
 
 - polling
 - webhook
 
-## Getting Update s
+```crystal
+require "telegram"
 
-```ruby
-#!/usr/bin/ruby
-# frozen_string_literal: true
+token = "place-your-bot\'s-token-here"
+bot = Telegram::Client.new(token)
 
-require 'teleruby'
-
-@token = %q{place-your-bot's-token-here}
-@bot = Telegram::Client.new(token: @token)
-
-updates = @bot.get_updates
-puts updates.inspect
+updates = bot.updates
 ```
 
 _NB:_ The default number of updates to be retrieved is _10_, but you can add yours like.
 
-```ruby
-@bot = Telegram::Client.new(token: @token)
-
-updates = @bot.get_updates(limit: 80)
+```crystal
+updates = bot.updates(limit: 80)
 ```
 
-Here 10 shows, 80 updates to be retrieved. Max limit is 100. You can also limit type of updates!.
+Here 80 shows, 80 updates to be retrieved. Max limit is 100. You can also limit type of updates!.
 
-```ruby
-up_dates = ['message', 'channel_post']
+```crystal
+up_dates = ["message", "channel_post"]
 
-@bot = Telegram::Client.new(token: @token)
-updates = @bot.get_updates(limit: 80, type: up_dates)
+updates = bot.updates(limit: 80, type: up_dates)
 ```
 
 In the above case bot will retrive 80 updates and only looks message and channel post notifications.
@@ -79,9 +72,8 @@ token = "place-your-bot's-token-here"
 bot = Telegram::Client.new(token)
 
 bot.do_polling do
-  updates = bot.get_updates
-  updates.each do |update|
-    if update.msg?
+  bot.updates.each do |update|
+    if update.is_message?
       message = update.message
       if message.text_msg?
         chat = message.chat
